@@ -4,6 +4,10 @@ A Firefox and Chrome extension that makes old Reddit usable on a phone: on old.r
 when your account uses the old design (the new design is left alone). It only activates on phone-sized
 screens, so desktop old Reddit is unchanged.
 
+| Front page | Comment thread | ☰ drawer |
+| :---: | :---: | :---: |
+| <img src="design/t8mLa6.png" width="260" alt="r/all listing with sort tabs, vote column, thumbnails and wrapped titles"> | <img src="design/ZMmZU.png" width="260" alt="Comment thread with coloured depth lines and a collapsed AutoModerator comment"> | <img src="design/zUUFZ.png" width="260" alt="Menu drawer with feeds, subscriptions and the subreddit styles switch"> |
+
 ## What it does
 
 - Lays the page out at the phone's width. No sideways scrolling; titles and comments wrap.
