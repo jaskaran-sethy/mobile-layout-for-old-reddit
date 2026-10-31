@@ -3,8 +3,10 @@
   "use strict";
 
   const root = document.documentElement;
+  // Firefox exposes the WebExtension API as `browser`, Chrome as `chrome` (promise-based in Manifest V3).
+  const ext = typeof browser !== "undefined" ? browser : typeof chrome !== "undefined" ? chrome : null;
   // Shows which build is running: document.documentElement.dataset.ormVersion in the console.
-  if (typeof browser !== "undefined" && browser.runtime) root.dataset.ormVersion = browser.runtime.getManifest().version;
+  if (ext && ext.runtime) root.dataset.ormVersion = ext.runtime.getManifest().version;
 
   // Re-checked on resize, so desktop Responsive Design Mode switches it on and off without a reload.
   // The window-width check covers RDM, where screen.* can still report the laptop's screen.
@@ -32,7 +34,7 @@
   let active = isActive();
   root.classList.toggle("orm", active);
 
-  const store = typeof browser !== "undefined" && browser.storage ? browser.storage.local : null;
+  const store = ext && ext.storage ? ext.storage.local : null;
   const settings = { subStyles: false };
   const SUB_CSS = 'link[title="applied_subreddit_stylesheet"], style[title="applied_subreddit_stylesheet"]';
   const LINE_COLORS = ["#e57373", "#64b5f6", "#81c784", "#ffb74d", "#ba68c8", "#4dd0e1", "#f06292", "#a1887f"];
