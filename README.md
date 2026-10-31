@@ -1,6 +1,6 @@
 # Mobile Layout for Old Reddit
 
-A Firefox extension that makes old Reddit usable on a phone: on old.reddit.com, and on www.reddit.com
+A Firefox and Chrome extension that makes old Reddit usable on a phone: on old.reddit.com, and on www.reddit.com
 when your account uses the old design (the new design is left alone). It only activates on phone-sized
 screens, so desktop old Reddit is unchanged.
 
@@ -21,7 +21,7 @@ screens, so desktop old Reddit is unchanged.
 
 ```
 extension/        manifest.json, mobile.css, mobile.js, icons/ (the extension itself)
-build.py          packages extension/ into dist/mobile-layout-for-old-reddit-<version>.xpi
+build.py          packages extension/ into dist/: the Firefox .xpi, a Chrome .zip (Manifest V3), and dist/chrome/ unpacked
 store/            listing.md (AMO listing text), icon.svg + render_icons.py (icon source)
 design/           Pencil mockups (listing, thread, drawer)
 test/             fixture pages copying old Reddit's markup, plus the tests
@@ -33,6 +33,8 @@ Tests:
 - `python test/make_fixtures.py && python test/run.py` injects the script into the fixtures at 412px (screenshots land in `test/shots/`).
 - `python test/e2e.py` loads `extension/` into Firefox as a temporary add-on and serves the fixtures as
   old.reddit.com / www.reddit.com, so the content script runs exactly as installed.
+- `python build.py && python test/e2e_chrome.py` does the same in Chromium with the Chrome build (`dist/chrome/`).
+  Needs `python -m playwright install chromium` once.
 
 ## Trying it in desktop Firefox
 
@@ -41,6 +43,18 @@ Tests:
 2. Open old.reddit.com, press **Ctrl+Shift+M** (Responsive Design Mode) and choose a phone preset.
 
 `document.documentElement.dataset.ormVersion` in the console shows which build is running.
+
+## Chrome
+
+`extension/manifest.json` stays Manifest V2 for Firefox; `build.py` writes the Chrome copy with `manifest_version: 3`
+and without the Firefox-only keys. The script and CSS are shared (`mobile.js` uses `browser` or `chrome`, whichever exists).
+
+To try it: `python build.py`, open `chrome://extensions`, turn on **Developer mode** → **Load unpacked** → pick `dist/chrome/`.
+Rebuild and click the reload icon on the extension after editing. Use DevTools' device toolbar (**Ctrl+Shift+M**) for a phone width.
+
+To publish: Chrome Web Store Developer Dashboard → **New item** → upload `dist/mobile-layout-for-old-reddit-<version>-chrome.zip`.
+The listing text in `store/listing.md` works there too (it needs a 128px icon, which is in the zip, and at least one 1280×800 or 640×400 screenshot).
+Chrome on Android doesn't run extensions; Edge, Brave, Kiwi and other Chromium browsers that do can use the same zip.
 
 ## Publishing on addons.mozilla.org
 
