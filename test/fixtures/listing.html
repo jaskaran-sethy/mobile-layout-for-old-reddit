@@ -1,0 +1,107 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1024"><title>all</title>
+<link rel="stylesheet" href="oldreddit-base.css">
+<link rel="stylesheet" href="subreddit-style.css" title="applied_subreddit_stylesheet">
+<script>
+// Like reddit: Modernizr overwrites <html class> while parsing, and a late script restores width=1024.
+document.documentElement.className = ' js cssanimations csstransforms';
+window.addEventListener('load', () => setTimeout(() => {
+  document.documentElement.className = ' js cssanimations csstransforms';
+  document.querySelectorAll('meta[name=viewport]').forEach(m => m.remove());
+  const m = document.createElement('meta'); m.name = 'viewport'; m.content = 'width=1024'; document.head.append(m);
+}, 50));
+function togglecomment(el) {
+  var t = el.closest('.thing');
+  t.classList.toggle('collapsed'); t.classList.toggle('noncollapsed');
+  el.textContent = t.classList.contains('collapsed') ? '[+]' : '[–]';
+  return false;
+}
+</script></head>
+<body class="listing-page with-listing-chooser">
+<div id="header">
+  <div id="sr-header-area"><div class="width-clip"><a class="redesign-beta-optin" href="#">GET NEW REDDIT</a>
+    <div class="dropdown srdrop"><span class="selected title">my subreddits</span></div>
+    <div class="drop-choices srdrop"><a class="choice" href="https://old.reddit.com/r/AskReddit/">AskReddit</a><a class="choice" href="https://old.reddit.com/r/pics/">pics</a><a class="choice" href="https://old.reddit.com/r/news/">news</a><a class="choice" href="https://old.reddit.com/r/thegrandtour/">thegrandtour</a><a class="choice" href="https://old.reddit.com/r/technology/">technology</a><a class="bottom-option choice" href="https://old.reddit.com/subreddits/">edit subscriptions</a></div>
+    <div class="sr-list"><ul class="flat-list sr-bar hover"><li><a class="choice" href="https://old.reddit.com/">home</a></li><li><span class="separator">-</span><a class="choice" href="https://old.reddit.com/r/popular/">popular</a></li><li class="selected"><span class="separator">-</span><a class="choice" href="https://old.reddit.com/r/all/">all</a></li><li><span class="separator">-</span><a class="choice" href="https://old.reddit.com/r/mod/">mod</a></li><li><span class="separator">-</span><a class="choice" href="https://old.reddit.com/users/">users</a></li></ul><span class="separator">&nbsp;|&nbsp;</span>
+    <ul class="flat-list sr-bar hover"><li><a class="choice" href="https://old.reddit.com/r/AskReddit/">AskReddit</a></li><li><span class="separator">-</span><a class="choice" href="https://old.reddit.com/r/pics/">pics</a></li></ul></div>
+    <a id="sr-more-link" href="https://old.reddit.com/subreddits/">edit &raquo;</a></div></div>
+  <div id="header-bottom-left"><a href="https://old.reddit.com/" id="header-img" class="default-header" title="">reddit.com</a>
+    <span class="hover pagename redditname"><a href="https://old.reddit.com/r/all/">all</a></span>
+    <ul class="tabmenu"><li class="selected"><a href="#">hot</a></li><li><a href="#">new</a></li><li><a href="#">rising</a></li><li><a href="#">controversial</a></li><li><a href="#">top</a></li><li><a href="#">gilded</a></li><li><a href="#">wiki</a></li></ul></div>
+  <div id="header-bottom-right"><span class="user"><a href="#">jase</a>&nbsp;(<span class="userkarma">1234</span>)</span><span class="separator">|</span><a class="havemail" id="mail" href="#">messages</a><span class="separator">|</span><ul class="flat-list hover"><li><a class="pref-lang choice" href="#">preferences</a></li></ul><span class="separator">|</span><form class="logout hover"><a href="#">logout</a></form></div>
+</div>
+<div class="listing-chooser"><div class="grippy"></div><ul>
+<li><a href="#">home</a><br><small>the home feed</small></li><li class="intro">new! create sets of subreddits to view together.</li>
+<li><a href="#">redditnews</a></li><li><a href="#">redditpets</a></li><li><a href="#">explore multis</a></li>
+<li><a href="#">everything</a></li><li><a href="#">moderating</a></li><li><a href="#">saved</a></li></ul></div>
+<div class="side">
+  <div class="spacer"><form id="search"><input name="q" placeholder="search"></form></div>
+  <div class="spacer"><div class="titlebox"><h1>all</h1><span class="subscribe-button"><a class="option add" href="#">subscribe</a></span>
+    <span class="subscribers"><span class="number">6,123,456</span> readers</span>
+    <div class="usertext-body"><div class="md"><p>Sidebar rules and description. A long sidebar paragraph that would normally sit to the right of the posts on desktop.</p></div></div></div></div>
+</div>
+<a name="content"></a>
+<div class="content" role="main">
+<div id="siteTable" class="sitetable linklisting"><div class="thing link" data-fullname="t3_0">
+<p class="parent"></p><span class="rank">1</span>
+<div class="midcol unvoted"><div class="arrow up" role="button" aria-label="upvote"></div><div class="score unvoted">13000</div><div class="arrow down" role="button" aria-label="downvote"></div></div>
+<a class="thumbnail" href="#"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2770%27 height=%2752%27%3E%3Crect width=%2770%27 height=%2752%27 fill=%27%23000000%27/%3E%3C/svg%3E"></a>
+<div class="entry unvoted"><div class="top-matter">
+<p class="title"><a class="title" href="thread.html">Jeremy Clarkson comments on the new season and says it will be the final one for the whole team</a> <span class="domain">(<a href="#">theguardian.com</a>)</span></p>
+<div class="expando-button collapsed"></div>
+<p class="tagline">submitted <time>2 hours ago</time> by <a class="author" href="#">user0</a> to <a class="subreddit" href="#">r/sub0</a></p>
+<ul class="flat-list buttons"><li class="first"><a class="comments" href="thread.html">98 comments</a></li><li class="share"><a href="#">share</a></li><li class="link-save-button save-button"><a href="#">save</a></li><li><form class="hide-button"><span><a href="#">hide</a></span></form></li><li class="report-button"><a class="reportbtn" href="#">report</a></li><li class="crosspost-button"><a href="#">crosspost</a></li></ul>
+</div><div class="expando expando-uninitialized"><div class="media-preview"><div class="media-preview-content" style="width:640px"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27480%27%3E%3Crect width=%27640%27 height=%27480%27 fill=%27%23999%27/%3E%3C/svg%3E" width="640" height="480"></div></div></div></div>
+<div class="child"></div><div class="clearleft"></div></div><div class="clearleft"></div><div class="thing link" data-fullname="t3_1">
+<p class="parent"></p><span class="rank">2</span>
+<div class="midcol unvoted"><div class="arrow up" role="button" aria-label="upvote"></div><div class="score unvoted">10500</div><div class="arrow down" role="button" aria-label="downvote"></div></div>
+<a class="thumbnail" href="#"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2770%27 height=%2752%27%3E%3Crect width=%2770%27 height=%2752%27 fill=%27%23000929%27/%3E%3C/svg%3E"></a>
+<div class="entry unvoted"><div class="top-matter">
+<p class="title"><a class="title" href="thread.html">So say we all: a long retrospective on twenty years of a TV show and its fandom</a> <span class="domain">(<a href="#">self.television</a>)</span></p>
+<div class="expando-button collapsed"></div>
+<p class="tagline">submitted <time>2 hours ago</time> by <a class="author" href="#">user1</a> to <a class="subreddit" href="#">r/sub1</a></p>
+<ul class="flat-list buttons"><li class="first"><a class="comments" href="thread.html">221 comments</a></li><li class="share"><a href="#">share</a></li><li class="link-save-button save-button"><a href="#">save</a></li><li><form class="hide-button"><span><a href="#">hide</a></span></form></li><li class="report-button"><a class="reportbtn" href="#">report</a></li><li class="crosspost-button"><a href="#">crosspost</a></li></ul>
+</div><div class="expando expando-uninitialized"><div class="media-preview"><div class="media-preview-content" style="width:640px"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27480%27%3E%3Crect width=%27640%27 height=%27480%27 fill=%27%23999%27/%3E%3C/svg%3E" width="640" height="480"></div></div></div></div>
+<div class="child"></div><div class="clearleft"></div></div><div class="clearleft"></div><div class="thing link" data-fullname="t3_2">
+<p class="parent"></p><span class="rank">3</span>
+<div class="midcol unvoted"><div class="arrow up" role="button" aria-label="upvote"></div><div class="score unvoted">13500</div><div class="arrow down" role="button" aria-label="downvote"></div></div>
+<a class="thumbnail" href="#"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2770%27 height=%2752%27%3E%3Crect width=%2770%27 height=%2752%27 fill=%27%23001252%27/%3E%3C/svg%3E"></a>
+<div class="entry unvoted"><div class="top-matter">
+<p class="title"><a class="title" href="thread.html">Why is the media not covering this story more widely? An investigation into newsroom priorities</a> <span class="domain">(<a href="#">thenation.com</a>)</span></p>
+<div class="expando-button collapsed"></div>
+<p class="tagline">submitted <time>2 hours ago</time> by <a class="author" href="#">user2</a> to <a class="subreddit" href="#">r/sub2</a></p>
+<ul class="flat-list buttons"><li class="first"><a class="comments" href="thread.html">723 comments</a></li><li class="share"><a href="#">share</a></li><li class="link-save-button save-button"><a href="#">save</a></li><li><form class="hide-button"><span><a href="#">hide</a></span></form></li><li class="report-button"><a class="reportbtn" href="#">report</a></li><li class="crosspost-button"><a href="#">crosspost</a></li></ul>
+</div><div class="expando expando-uninitialized"><div class="media-preview"><div class="media-preview-content" style="width:640px"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27480%27%3E%3Crect width=%27640%27 height=%27480%27 fill=%27%23999%27/%3E%3C/svg%3E" width="640" height="480"></div></div></div></div>
+<div class="child"></div><div class="clearleft"></div></div><div class="clearleft"></div><div class="thing link" data-fullname="t3_3">
+<p class="parent"></p><span class="rank">4</span>
+<div class="midcol unvoted"><div class="arrow up" role="button" aria-label="upvote"></div><div class="score unvoted">7821</div><div class="arrow down" role="button" aria-label="downvote"></div></div>
+<a class="thumbnail" href="#"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2770%27 height=%2752%27%3E%3Crect width=%2770%27 height=%2752%27 fill=%27%23001b7b%27/%3E%3C/svg%3E"></a>
+<div class="entry unvoted"><div class="top-matter">
+<p class="title"><a class="title" href="thread.html">My sister and I shaved our heads together to hopefully help her through her treatment journey</a> <span class="domain">(<a href="#">i.redd.it</a>)</span></p>
+<div class="expando-button collapsed"></div>
+<p class="tagline">submitted <time>2 hours ago</time> by <a class="author" href="#">user3</a> to <a class="subreddit" href="#">r/sub3</a></p>
+<ul class="flat-list buttons"><li class="first"><a class="comments" href="thread.html">291 comments</a></li><li class="share"><a href="#">share</a></li><li class="link-save-button save-button"><a href="#">save</a></li><li><form class="hide-button"><span><a href="#">hide</a></span></form></li><li class="report-button"><a class="reportbtn" href="#">report</a></li><li class="crosspost-button"><a href="#">crosspost</a></li></ul>
+</div><div class="expando expando-uninitialized"><div class="media-preview"><div class="media-preview-content" style="width:640px"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27480%27%3E%3Crect width=%27640%27 height=%27480%27 fill=%27%23999%27/%3E%3C/svg%3E" width="640" height="480"></div></div></div></div>
+<div class="child"></div><div class="clearleft"></div></div><div class="clearleft"></div><div class="thing link" data-fullname="t3_4">
+<p class="parent"></p><span class="rank">5</span>
+<div class="midcol unvoted"><div class="arrow up" role="button" aria-label="upvote"></div><div class="score unvoted">8970</div><div class="arrow down" role="button" aria-label="downvote"></div></div>
+<a class="thumbnail" href="#"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2770%27 height=%2752%27%3E%3Crect width=%2770%27 height=%2752%27 fill=%27%230024a4%27/%3E%3C/svg%3E"></a>
+<div class="entry unvoted"><div class="top-matter">
+<p class="title"><a class="title" href="thread.html">OpenAI CEO says the next model will ship next spring</a> <span class="domain">(<a href="#">tomshardware.com</a>)</span></p>
+<div class="expando-button collapsed"></div>
+<p class="tagline">submitted <time>2 hours ago</time> by <a class="author" href="#">user4</a> to <a class="subreddit" href="#">r/sub4</a></p>
+<ul class="flat-list buttons"><li class="first"><a class="comments" href="thread.html">1999 comments</a></li><li class="share"><a href="#">share</a></li><li class="link-save-button save-button"><a href="#">save</a></li><li><form class="hide-button"><span><a href="#">hide</a></span></form></li><li class="report-button"><a class="reportbtn" href="#">report</a></li><li class="crosspost-button"><a href="#">crosspost</a></li></ul>
+</div><div class="expando expando-uninitialized"><div class="media-preview"><div class="media-preview-content" style="width:640px"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27480%27%3E%3Crect width=%27640%27 height=%27480%27 fill=%27%23999%27/%3E%3C/svg%3E" width="640" height="480"></div></div></div></div>
+<div class="child"></div><div class="clearleft"></div></div><div class="clearleft"></div><div class="thing link" data-fullname="t3_5">
+<p class="parent"></p><span class="rank">6</span>
+<div class="midcol unvoted"><div class="arrow up" role="button" aria-label="upvote"></div><div class="score unvoted">1780</div><div class="arrow down" role="button" aria-label="downvote"></div></div>
+<a class="thumbnail" href="#"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2770%27 height=%2752%27%3E%3Crect width=%2770%27 height=%2752%27 fill=%27%23002dcd%27/%3E%3C/svg%3E"></a>
+<div class="entry unvoted"><div class="top-matter">
+<p class="title"><span class="linkflairlabel">Food</span> <a class="title" href="thread.html">Might have been a little overboard on the beans</a> <span class="domain">(<a href="#">i.redd.it</a>)</span></p>
+<div class="expando-button collapsed"></div>
+<p class="tagline">submitted <time>2 hours ago</time> by <a class="author" href="#">user5</a> to <a class="subreddit" href="#">r/sub5</a></p>
+<ul class="flat-list buttons"><li class="first"><a class="comments" href="thread.html">435 comments</a></li><li class="share"><a href="#">share</a></li><li class="link-save-button save-button"><a href="#">save</a></li><li><form class="hide-button"><span><a href="#">hide</a></span></form></li><li class="report-button"><a class="reportbtn" href="#">report</a></li><li class="crosspost-button"><a href="#">crosspost</a></li></ul>
+</div><div class="expando expando-uninitialized"><div class="media-preview"><div class="media-preview-content" style="width:640px"><img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27480%27%3E%3Crect width=%27640%27 height=%27480%27 fill=%27%23999%27/%3E%3C/svg%3E" width="640" height="480"></div></div></div></div>
+<div class="child"></div><div class="clearleft"></div></div><div class="clearleft"></div><div class="nav-buttons"><span class="nextprev">view more: <span class="next-button"><a href="#" rel="nofollow next">next &rsaquo;</a></span></span></div></div>
+</div>
+<div class="verify-nag-wrapper"><div style="position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:4px solid #ff4500;padding:10px;font-size:14px"><b>jase, add your email to verify your Reddit account.</b> Verify your email to prevent being locked out of your account. <button>ADD EMAIL</button></div></div>
+</body></html>

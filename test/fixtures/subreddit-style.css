@@ -1,0 +1,3 @@
+#header { height: 520px; background: linear-gradient(#ff6a3d, #42a5f5); }
+#header-bottom-left { bottom: 0; background: #555; width: 100%; height: 60px; }
+.content::before { content: 'You are not subscribed to this community. Please respect that by not downvoting.'; display: block; background: #555; color: #fff; padding: 10px; font-size: 14px; }

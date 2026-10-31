@@ -1,0 +1,57 @@
+/* Approximation of old.reddit's desktop stylesheet: only the rules that shape the mobile problems. */
+body { font: normal x-small verdana, arial, helvetica, sans-serif; margin: 0; background: #fff; min-width: 980px; }
+a { color: #0079d3; text-decoration: none; }
+#header { background: #cee3f8; border-bottom: 1px solid #5f99cf; position: relative; min-height: 70px; }
+#sr-header-area { background: #f0f0f0; height: 18px; line-height: 18px; text-transform: uppercase; white-space: nowrap; overflow: hidden; font-size: 9px; padding: 0 4px; }
+.redesign-beta-optin { background: #ff4500; color: #fff; font-weight: bold; padding: 0 12px; margin-right: 6px; display: inline-block; }
+#header-bottom-left { position: absolute; bottom: 0; left: 0; }
+#header-img.default-header { display: inline-block; width: 120px; height: 40px; text-indent: -9999px; overflow: hidden; background: linear-gradient(90deg, #ff4500 30%, #000 30%); vertical-align: bottom; }
+.pagename { font-size: 1.2em; font-weight: bold; margin-right: 1ex; text-transform: uppercase; }
+ul.tabmenu { list-style: none; display: inline-block; margin: 0; padding: 0; vertical-align: bottom; white-space: nowrap; }
+.tabmenu li { display: inline; margin: 0 1px; }
+.tabmenu li a { background: #eff7ff; padding: 2px 6px; font-weight: bold; }
+.tabmenu li.selected a { background: #fff; color: orangered; border: 1px solid #5f99cf; border-bottom: 1px solid #fff; }
+#header-bottom-right { position: absolute; right: 0; bottom: 0; background: #eff7ff; padding: 4px; border-radius: 7px 0 0 0; font-size: 10px; }
+.listing-chooser { position: absolute; left: 0; top: 0; bottom: 0; width: 150px; background: #f6f6f6; padding-top: 85px; }
+.listing-chooser li { list-style: none; padding: 6px; font-size: 12px; }
+.listing-chooser .intro { background: #fbf2b5; padding: 6px; }
+body.with-listing-chooser > .content { margin-left: 160px; }
+.side { float: right; width: 300px; margin: 0 5px 0 10px; font-size: small; }
+.side .spacer { margin-bottom: 10px; }
+.content { margin: 7px 5px 0; }
+.thing { margin: 0 0 8px 0; overflow: hidden; }
+.thing .rank { float: left; width: 2.2ex; color: #c6c6c6; font-size: medium; text-align: right; margin-top: 15px; }
+.midcol { float: left; margin: 0 7px 0 7px; width: 5ex; text-align: center; }
+.arrow { display: block; width: 15px; height: 14px; margin: 2px auto 0; background: #c6c6c6; cursor: pointer; }
+.arrow.up { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.arrow.down { clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.score { color: #c6c6c6; font-weight: bold; font-size: small; }
+.thumbnail { float: left; margin: 0 5px; width: 70px; height: 52px; background: #ddd; overflow: hidden; }
+.thumbnail img { width: 70px; }
+.entry { overflow: hidden; }
+p.title { margin: 0 0 1px; font-size: medium; white-space: nowrap; }
+a.title { color: #0000ff; font-size: medium; }
+.domain { color: #888; font-size: x-small; }
+.tagline { color: #888; font-size: x-small; margin: 0; }
+.tagline .author { color: #369; }
+.flat-list.buttons { list-style: none; padding: 1px 0; margin: 0; white-space: nowrap; }
+.flat-list.buttons li { display: inline-block; padding-right: 4px; }
+.flat-list.buttons a { color: #888; font-weight: bold; font-size: x-small; }
+.expando-button { float: left; width: 23px; height: 23px; margin: 2px 5px 2px 0; background: #ccc; cursor: pointer; }
+.expando { display: none; }
+.expando .media-preview-content { width: 640px; }
+.linkflairlabel { background: #e8e8e8; padding: 0 2px; font-size: x-small; }
+.commentarea { margin: 0 0 0 10px; }
+.commentarea .panestack-title { font-size: medium; border-bottom: 1px dotted gray; padding-bottom: 3px; }
+.usertext-edit textarea { width: 500px; height: 100px; }
+.comment { margin-left: 10px; }
+.comment .midcol { width: 15px; margin: 0 4px 0 0; }
+.comment .entry { overflow: visible; }
+.comment .tagline .expand { color: #369; margin-right: 4px; }
+.comment .md { max-width: 60em; font-size: small; white-space: nowrap; }
+.comment .md p { margin: 4px 0; }
+.comment .child { margin-left: 15px; border-left: 1px dotted #ddf; }
+.comment.collapsed > .entry .usertext, .comment.collapsed > .entry .buttons, .comment.collapsed > .child, .comment.collapsed > .midcol { display: none; }
+.morechildren a { font-size: x-small; font-weight: bold; }
+.nav-buttons { margin: 10px; font-size: small; }
+.nextprev a { background: #eee; border: 1px solid #ddd; padding: 1px 4px; }

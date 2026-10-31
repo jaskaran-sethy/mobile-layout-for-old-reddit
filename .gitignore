@@ -1,0 +1,8 @@
+# Build output: python build.py
+dist/
+
+# Written by the tests
+test/shots/
+
+__pycache__/
+*.pyc
