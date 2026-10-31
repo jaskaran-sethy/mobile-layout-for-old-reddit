@@ -1,0 +1,742 @@
+/*
+ * Mobile Layout for Old Reddit. Every rule is scoped to html.orm, which mobile.js sets only on
+ * phone-sized screens, so desktop old.reddit is untouched.
+ */
+
+/* ---------- Fit the page to the screen ---------- */
+
+html.orm,
+html.orm body {
+  min-width: 0 !important;
+  max-width: 100vw !important;
+  overflow-x: clip !important; /* clip, not hidden: hidden would stop #orm-bar from sticking */
+}
+
+html.orm body {
+  font-size: 13px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html.orm .content {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+html.orm .content img,
+html.orm .content video,
+html.orm .content iframe,
+html.orm .content embed {
+  max-width: 100% !important;
+}
+
+html.orm .content img,
+html.orm .content video {
+  height: auto !important;
+}
+
+html.orm .media-preview,
+html.orm .media-preview-content,
+html.orm .expando .media-embed,
+html.orm .expando .usertext-body,
+html.orm .expando .md {
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+html.orm .md {
+  max-width: none !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+html.orm .md pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+html.orm .md table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+html.orm .listing-chooser,
+html.orm .footer-parent,
+html.orm .debuginfo {
+  display: none !important;
+}
+
+html.orm body.with-listing-chooser > .content,
+html.orm body.with-listing-chooser > .footer-parent {
+  margin-left: 0 !important;
+}
+
+/* ---------- Header: logo + page name + ☰, then the sort tabs ---------- */
+
+html.orm #header {
+  position: relative;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  background: #cee3f8 !important;
+  border-bottom: 1px solid #5f99cf !important;
+}
+
+/* The subreddit bar and account row live in the drawer on phones. */
+html.orm #sr-header-area,
+html.orm .redesign-beta-optin,
+html.orm .redesign-beta-optin-btn,
+html.orm #redesign-beta-optin-btn,
+html.orm .orm-nag {
+  display: none !important;
+}
+
+#orm-bar {
+  display: none;
+}
+
+html.orm #orm-bar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding-left: 12px;
+  background: #cee3f8;
+  border-bottom: 1px solid #b4cfea;
+}
+
+html.orm #orm-home {
+  flex: none;
+  color: #000 !important;
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+
+html.orm #orm-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #369 !important;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Reddit's logo and page name are replaced by #orm-bar; only the sort tabs stay. */
+html.orm #header-bottom-left {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 0 0 12px !important;
+  margin: 0 !important;
+  background: none !important;
+}
+
+html.orm #header-bottom-left > :not(.tabmenu) {
+  display: none !important;
+}
+
+html.orm #header .tabmenu {
+  display: flex !important;
+  align-items: flex-end;
+  gap: 2px;
+  white-space: nowrap !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0 0 -1px -4px !important;
+  padding: 0 !important;
+  scrollbar-width: none;
+}
+
+html.orm #header .tabmenu li {
+  display: block !important;
+  margin: 0 !important;
+}
+
+html.orm #header .tabmenu li a {
+  display: block;
+  padding: 9px 12px !important;
+  border: 1px solid transparent !important;
+  border-bottom: 0 !important;
+  border-radius: 6px 6px 0 0;
+  background: #eff7ff !important;
+  color: #369 !important;
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+html.orm #header .tabmenu li.selected a {
+  background: #fff !important;
+  color: #ff4500 !important;
+  border-color: #5f99cf !important;
+}
+
+/* ---------- Drawer ---------- */
+
+#orm-menu-btn,
+#orm-drawer,
+#orm-backdrop {
+  display: none;
+}
+
+html.orm #orm-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #333;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+html.orm.orm-side-open {
+  overflow: hidden !important;
+}
+
+html.orm.orm-side-open #orm-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+html.orm.orm-side-open #orm-drawer {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+  width: min(85vw, 340px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+}
+
+#orm-bar a,
+#orm-drawer a {
+  text-decoration: none;
+}
+
+#orm-drawer .orm-main-feeds {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fff;
+}
+
+#orm-drawer .orm-main-feeds a {
+  flex: 1;
+  padding: 11px 0;
+  border: 1px solid #c9dcef;
+  border-radius: 8px;
+  background: #eff7ff;
+  color: #369;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#orm-drawer .orm-main-feeds a.orm-current {
+  border-color: #ff4500;
+  background: #ff4500;
+  color: #fff;
+}
+
+#orm-drawer .orm-account {
+  padding: 12px 16px 8px;
+  background: #cee3f8;
+  border-bottom: 1px solid #5f99cf;
+}
+
+/* Reddit's own account row (user, karma, mail, preferences, logout), restyled. */
+html.orm #orm-drawer #header-bottom-right {
+  position: static !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 14px;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  font-size: 13px !important;
+  line-height: 32px;
+}
+
+html.orm #orm-drawer #header-bottom-right .separator {
+  display: none;
+}
+
+html.orm #orm-drawer #header-bottom-right .user {
+  flex: 1 0 100%;
+  font-size: 15px;
+}
+
+html.orm #orm-drawer #header-bottom-right .user > a {
+  font-weight: bold;
+}
+
+html.orm #orm-drawer #header-bottom-right form.logout,
+html.orm #orm-drawer #header-bottom-right ul,
+html.orm #orm-drawer #header-bottom-right li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#orm-drawer .orm-drawer-body {
+  padding: 4px 16px 24px;
+}
+
+#orm-drawer .orm-section {
+  margin-top: 16px;
+}
+
+#orm-drawer .orm-section > h3 {
+  margin: 0 0 6px;
+  color: #888;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+#orm-drawer .orm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#orm-drawer .orm-chip {
+  padding: 7px 12px;
+  border: 1px solid #c9dcef;
+  border-radius: 16px;
+  background: #eff7ff;
+  color: #369;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#orm-drawer .orm-chip.orm-current {
+  border-color: #ff4500;
+  background: #ff4500;
+  color: #fff;
+}
+
+#orm-drawer .orm-subs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#orm-drawer .orm-subs a {
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+
+#orm-drawer .orm-subs a.orm-current {
+  color: #ff4500;
+  font-weight: bold;
+}
+
+#orm-drawer .orm-edit-subs {
+  display: inline-block;
+  padding: 10px 0 0;
+  color: #888;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#orm-settings {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f3f6fa;
+  font-size: 14px;
+}
+
+#orm-settings label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+}
+
+#orm-settings input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+/* The subreddit sidebar, moved into the drawer. */
+html.orm #orm-drawer .side {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  font-size: 14px;
+}
+
+html.orm #orm-drawer .side * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+html.orm #orm-drawer .side #search {
+  margin: 0 0 12px;
+}
+
+html.orm #orm-drawer .side #search input[name="q"] {
+  width: 100% !important;
+  padding: 9px 10px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 6px;
+  font-size: 16px !important;
+}
+
+/* Anything left of .side outside the drawer stays hidden. */
+html.orm body > .side {
+  display: none !important;
+}
+
+/* ---------- Post listings ---------- */
+
+html.orm .thing.link {
+  display: grid !important;
+  grid-template-columns: 44px auto minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: start;
+  margin: 0 !important;
+  padding: 12px 12px 8px 4px !important;
+  border-bottom: 1px solid #e6e6e6;
+  overflow: visible !important;
+}
+
+html.orm .thing.link > .rank,
+html.orm .thing.link > .parent,
+html.orm .thing.link > .child:empty,
+html.orm .thing.link > .clearleft {
+  display: none !important;
+}
+
+html.orm .thing.link > .midcol {
+  grid-column: 1;
+  grid-row: 1;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+html.orm .thing.link > .thumbnail {
+  grid-column: 2;
+  grid-row: 1;
+  float: none !important;
+  width: 64px !important;
+  height: auto !important;
+  margin: 2px 0 0 !important;
+}
+
+html.orm .thing.link > .thumbnail img {
+  display: block;
+  width: 64px !important;
+  height: 64px !important;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Flatten .entry so the expanded preview can span the whole row. */
+html.orm .thing.link > .entry {
+  display: contents !important;
+}
+
+html.orm .thing.link > .entry > * {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+html.orm .thing.link > .entry > .top-matter {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+html.orm .thing.link .expando {
+  margin: 8px 0 0 !important;
+}
+
+html.orm .thing.link p.title {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  margin: 0 0 4px !important;
+  line-height: 1.3;
+}
+
+html.orm .thing.link a.title {
+  font-size: 16px !important;
+}
+
+html.orm .thing.link .domain {
+  font-size: 12px !important;
+}
+
+html.orm .thing .tagline {
+  font-size: 12px !important;
+  line-height: 1.5;
+  white-space: normal !important;
+}
+
+html.orm .thing.link .expando-button {
+  position: relative;
+  margin: 2px 8px 2px 0 !important;
+}
+
+/* ---------- Vote arrows and other small targets: bigger, with a wider invisible hit area ---------- */
+
+html.orm .midcol .arrow {
+  position: relative;
+  transform: scale(1.4);
+  margin: 6px auto !important;
+}
+
+html.orm .midcol .arrow::after,
+html.orm .expando-button::after,
+html.orm .comment .tagline .expand::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+
+html.orm .midcol .score {
+  font-size: 12px !important;
+  line-height: 1.2;
+}
+
+/* ---------- Action rows (share / save / report ... behind "⋯") ---------- */
+
+html.orm .flat-list.buttons {
+  white-space: normal !important;
+  padding: 0 !important;
+  margin: 2px 0 0 -6px !important;
+}
+
+html.orm .flat-list.buttons > li {
+  display: inline-block !important;
+  padding: 0 !important;
+}
+
+html.orm .flat-list.buttons a,
+html.orm .flat-list.buttons .option > a {
+  display: inline-block;
+  padding: 7px 6px !important;
+  font-size: 13px !important;
+}
+
+html.orm .flat-list.buttons.orm-collapsible:not(.orm-open) > li:not(.orm-keep):not(.orm-more-li) {
+  display: none !important;
+}
+
+html:not(.orm) .orm-more-li {
+  display: none !important;
+}
+
+html.orm .flat-list.buttons .orm-more {
+  min-width: 28px;
+  text-align: center;
+  font-size: 16px !important;
+  letter-spacing: 1px;
+}
+
+/* ---------- Comment threads ---------- */
+
+html.orm .commentarea {
+  margin: 0 !important;
+  padding: 0 8px 16px !important;
+}
+
+/* "all 106 comments" and "sorted by: best" share one row. */
+html.orm .commentarea > .panestack-title,
+html.orm .commentarea > .menuarea {
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 12px 0 4px !important;
+  border: 0 !important;
+  font-size: 13px !important;
+}
+
+html.orm .commentarea > .panestack-title .title {
+  font-size: 15px !important;
+  font-weight: bold;
+}
+
+html.orm .commentarea > .menuarea {
+  float: right;
+}
+
+html.orm .commentarea > .menuarea .spacer {
+  margin: 0 !important;
+}
+
+html.orm #orm-compose-btn,
+html.orm .commentarea > .sitetable {
+  clear: both;
+}
+
+html.orm .commentarea .menuarea .dropdown {
+  display: inline-block !important;
+}
+
+html.orm .commentarea:not(.orm-compose) > form.usertext {
+  display: none !important;
+}
+
+#orm-compose-btn {
+  display: none;
+}
+
+html.orm #orm-compose-btn {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #cdd;
+  border-radius: 8px;
+  background: #f6f8fb;
+  color: #555;
+  font-size: 14px;
+  text-align: left;
+}
+
+html.orm .commentarea.orm-compose #orm-compose-btn {
+  display: none;
+}
+
+html.orm .usertext-edit,
+html.orm .usertext-edit textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+html.orm .usertext-edit textarea {
+  font-size: 16px !important; /* below 16px, mobile browsers zoom in on focus */
+}
+
+/* Arrows in their own column so comment text doesn't wrap around them. */
+html.orm .commentarea .comment {
+  display: grid !important;
+  grid-template-columns: 24px minmax(0, 1fr);
+  column-gap: 4px;
+  margin: 8px 0 0 !important;
+}
+
+html.orm .comment > .parent,
+html.orm .comment > .clearleft {
+  display: none !important;
+}
+
+html.orm .comment > .midcol {
+  grid-column: 1;
+  grid-row: 1;
+  float: none !important;
+  width: auto !important;
+  margin: 2px 0 0 !important;
+}
+
+html.orm .comment > .entry {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  overflow: visible !important;
+}
+
+html.orm .comment > .child {
+  grid-column: 1 / -1;
+}
+
+html.orm .comment.collapsed > .entry {
+  grid-column: 1 / -1;
+}
+
+html.orm .comment .tagline {
+  font-size: 12px !important;
+}
+
+html.orm .comment .tagline .expand {
+  position: relative;
+  display: inline-block;
+  font-size: 14px !important;
+  margin-right: 6px !important;
+}
+
+html.orm .comment .md {
+  font-size: 15px !important;
+  line-height: 1.45;
+}
+
+html.orm .comment .md p {
+  margin: 4px 0 !important;
+}
+
+/* Thin indents with a coloured line per depth; tapping the line collapses that thread. */
+html.orm .comment > .child {
+  margin: 0 0 0 4px !important;
+  padding-left: 10px !important;
+  border-left: 2px solid var(--orm-line, #ccd) !important;
+  cursor: pointer;
+}
+
+html.orm .comment > .child > * {
+  cursor: auto;
+}
+
+html.orm .comment.collapsed > .entry .tagline {
+  opacity: 0.75;
+}
+
+html.orm .morecomments a,
+html.orm .morechildren a.button {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 8px 12px !important;
+  border-radius: 6px;
+  background: #eef3fa;
+  font-size: 13px !important;
+}
+
+/* ---------- Paging ---------- */
+
+html.orm .nav-buttons {
+  margin: 12px 8px 24px !important;
+  font-size: 14px !important;
+}
+
+html.orm .nav-buttons .nextprev a {
+  display: inline-block;
+  padding: 10px 18px !important;
+  border-radius: 8px;
+  font-size: 15px !important;
+}

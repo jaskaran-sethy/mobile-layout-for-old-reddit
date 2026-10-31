@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "Mobile Layout for Old Reddit",
+  "version": "1.0.0",
+  "description": "Makes old Reddit usable on a phone: fits the screen, sticky top bar with a menu drawer, compact posts, and readable comment threads.",
+  "author": "Jaskaran Sethy",
+  "icons": {
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "old-reddit-mobile@jsethy",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "120.0"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://old.reddit.com/*",
+        "*://www.reddit.com/*",
+        "*://reddit.com/*"
+      ],
+      "css": [
+        "mobile.css"
+      ],
+      "js": [
+        "mobile.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
