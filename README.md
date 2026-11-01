@@ -27,6 +27,7 @@ screens, so desktop old Reddit is unchanged.
 extension/        manifest.json, mobile.css, mobile.js, icons/ (the extension itself)
 build.py          packages extension/ into dist/: the Firefox .xpi, a Chrome .zip (Manifest V3), and dist/chrome/ unpacked
 store/            listing.md (AMO listing text), icon.svg + render_icons.py (icon source)
+                  chrome/: Chrome Web Store screenshots and promo tiles (python store/render_chrome_images.py)
 design/           Pencil mockups (listing, thread, drawer)
 test/             fixture pages copying old Reddit's markup, plus the tests
 LICENSE           MIT
@@ -57,7 +58,9 @@ To try it: `python build.py`, open `chrome://extensions`, turn on **Developer mo
 Rebuild and click the reload icon on the extension after editing. Use DevTools' device toolbar (**Ctrl+Shift+M**) for a phone width.
 
 To publish: Chrome Web Store Developer Dashboard → **New item** → upload `dist/mobile-layout-for-old-reddit-<version>-chrome.zip`.
-The listing text in `store/listing.md` works there too (it needs a 128px icon, which is in the zip, and at least one 1280×800 or 640×400 screenshot).
+The listing text in `store/listing.md` works there too. Images are in `store/chrome/`: `screenshot-1..4.png` (1280×800),
+`promo-small.png` (440×280, required) and `promo-marquee.png` (1400×560, optional); the store icon is `extension/icons/icon-128.png`.
+Rebuild them from `design/` with `python store/render_chrome_images.py`.
 Chrome on Android doesn't run extensions; Edge, Brave, Kiwi and other Chromium browsers that do can use the same zip.
 
 ## Publishing on addons.mozilla.org
