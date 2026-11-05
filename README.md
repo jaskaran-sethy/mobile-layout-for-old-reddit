@@ -55,12 +55,3 @@ Tests:
 
 `extension/manifest.json` stays Manifest V2 for Firefox; `build.py` writes the Chrome copy with `manifest_version: 3`
 and without the Firefox-only keys. The script and CSS are shared (`mobile.js` uses `browser` or `chrome`, whichever exists).
-
-To try it: `python build.py`, open `chrome://extensions`, turn on **Developer mode** → **Load unpacked** → pick `dist/chrome/`.
-Rebuild and click the reload icon on the extension after editing. Use DevTools' device toolbar (**Ctrl+Shift+M**) for a phone width.
-
-Updates: bump `version` in `extension/manifest.json`, rebuild, then **Upload New Version**.
-
-To install your own signed copy before the listing is approved:
-`npx web-ext sign --channel=unlisted --source-dir extension --api-key <key> --api-secret <secret>`,
-then in Firefox for Android: Settings → About Firefox, tap the logo 5 times, then Settings → "Install extension from file".
