@@ -4,6 +4,8 @@ A Firefox and Chrome extension that makes old Reddit usable on a phone: on old.r
 when your account uses the old design (the new design is left alone). It only activates on phone-sized
 screens, so desktop old Reddit is unchanged.
 
+https://addons.mozilla.org/en-US/firefox/addon/mobile-layout-for-old-reddit/
+
 | Front page | Comment thread | ☰ drawer |
 | :---: | :---: | :---: |
 | <img src="design/t8mLa6.png" width="260" alt="r/all listing with sort tabs, vote column, thumbnails and wrapped titles"> | <img src="design/ZMmZU.png" width="260" alt="Comment thread with coloured depth lines and a collapsed AutoModerator comment"> | <img src="design/zUUFZ.png" width="260" alt="Menu drawer with feeds, subscriptions and the subreddit styles switch"> |
@@ -56,19 +58,6 @@ and without the Firefox-only keys. The script and CSS are shared (`mobile.js` us
 
 To try it: `python build.py`, open `chrome://extensions`, turn on **Developer mode** → **Load unpacked** → pick `dist/chrome/`.
 Rebuild and click the reload icon on the extension after editing. Use DevTools' device toolbar (**Ctrl+Shift+M**) for a phone width.
-
-To publish: Chrome Web Store Developer Dashboard → **New item** → upload `dist/mobile-layout-for-old-reddit-<version>-chrome.zip`.
-The listing text in `store/listing.md` works there too. Images are in `store/chrome/`: `screenshot-1..4.png` (1280×800),
-`promo-small.png` (440×280, required) and `promo-marquee.png` (1400×560, optional); the store icon is `extension/icons/icon-128.png`.
-Rebuild them from `design/` with `python store/render_chrome_images.py`.
-Chrome on Android doesn't run extensions; Edge, Brave, Kiwi and other Chromium browsers that do can use the same zip.
-
-## Publishing on addons.mozilla.org
-
-1. `python build.py` → `dist/mobile-layout-for-old-reddit-<version>.xpi`.
-2. Developer Hub → **Submit a New Add-on** → **On this site** → upload the .xpi.
-3. Tick **Firefox** and **Firefox for Android**. Source code: not needed (nothing is minified or bundled).
-4. Fill in the listing from `store/listing.md` and add screenshots.
 
 Updates: bump `version` in `extension/manifest.json`, rebuild, then **Upload New Version**.
 
